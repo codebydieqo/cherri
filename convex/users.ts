@@ -4,7 +4,6 @@ import { v } from "convex/values";
 export const createUser = internalMutation({
   args: {
     user_id: v.string(),
-    email: v.string(),
     first_name: v.string(),
     last_name: v.optional(v.string()),
     image_url: v.optional(v.string()),
@@ -38,7 +37,7 @@ export const getCurrentUser = query({
 
     return await ctx.db
       .query("users")
-      .filter((q) => q.eq(q.field("email"), userData.email))
+      .filter((q) => q.eq(q.field("user_id"), userData.subject))
       .unique();
   },
 });

@@ -20,7 +20,6 @@ http.route({
         const data = event.data;
         await ctx.runMutation(internal.users.createUser, {
           user_id: data.id,
-          email: data.email_addresses[0].email_address,
           first_name: data.first_name ?? "",
           last_name: data.last_name ?? "",
           image_url: data.image_url,
